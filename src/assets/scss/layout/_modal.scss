@@ -1,0 +1,58 @@
+.modal-content {
+    background-color: $modal-bg;
+    border-width: $modal-border-width;
+    border-color: $modal-content-border-color;
+    border-radius: $modal-border-radius;
+}
+.modal-header {
+    font-size: $headings-font-size;
+    border-bottom-color:$modal-header-border-color;
+}
+.modal-header button {
+    visibility: hidden;
+}
+.modal-body-label {
+    color: $modal-label-color !important;
+    margin-bottom: 0.1rem !important;
+}
+.modal-body-info-label {
+    color: $modal-content-border-color !important;
+    margin-bottom: 0.1rem !important;
+}
+.modal-body-input {
+    border-color: $modal-content-border-color !important;
+    border-radius: $modal-border-radius;
+}
+.modal-body-textarea {
+    resize: none;
+    border-color: $modal-content-border-color !important;
+}
+.modal-footer {
+    border-top: none;
+}
+
+.modal-btn-primary{
+    width: $btn-modal-width !important;
+    height: $btn-modal-height !important;
+    border-radius: $btn-modal-border-radius !important;
+}
+  
+.modal-btn-primary:hover, .modal-btn-primary:active, .modal-btn-primary:focus  {
+    background-color: $modal-btn-primary-hover-color !important;
+    border-color: $modal-btn-primary-hover-color !important;
+}
+
+.modal-btn-secondary{
+    color: $modal-btn-color !important;
+    background-color: $modal-btn-bg;
+    border-color: $modal-btn-border-color !important;
+    width: $btn-modal-width !important;
+    height: $btn-modal-height !important;
+    border-radius: $btn-modal-border-radius !important;
+}
+
+.modal-btn-secondary:hover, .modal-btn-secondary:active, .modal-btn-secondary:focus  {
+    background-color: $modal-btn-hover-bg-color !important;
+    border-color: $modal-btn-hover-border-color !important;
+    color: $modal-btn-hover-color !important;
+}

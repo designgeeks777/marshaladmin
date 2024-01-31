@@ -1,0 +1,338 @@
+.pageWrapper {
+  min-height: 100vh;
+}
+.contentArea {
+  flex-grow: 1;
+}
+.wrapper {
+  max-width: 1300px;
+  margin: 0 auto;
+}
+.card {
+  box-shadow: $card-box-shadow;
+  margin-bottom: 30px;
+  border-radius: $card-border-radius;
+}
+
+.circle-box {
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 100%;
+  &.lg-box {
+    width: 60px;
+    height: 60px;
+    font-size: 21px;
+    line-height: 60px;
+  }
+}
+.button-group .btn {
+  margin: 3px;
+}
+
+.table>:not(:first-child) {
+  border-top: 2px solid;
+}
+
+.table-borderless>:not(:first-child) {
+  border-top-width: 0;
+}
+
+.welcome-text {
+font-size: $headings-font-size;
+font-weight: $body-font-weight;
+color: $white;
+}
+
+.welcome-text:hover{
+color: $white;
+}
+
+.navbar-brand {
+  margin-right: 0px;
+}
+
+//for mobile view logo white bg
+.card-bg{ 
+  background: $white;
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar-collapse {
+  display: flex;
+  justify-content: flex-end;
+  align-items: unset;
+}
+
+.btn-primary {
+  border-color: transparent !important;
+  background:  $gradient !important;
+}
+
+.btn-primary:hover, .btn-primary:active, .btn-primary:focus  {
+  background-color: $primary !important;
+  border-color: $primary !important;
+}
+
+.btn-secondary {
+  color: $primary !important;
+  background-color: $white !important;
+  border-color: $primary !important;
+} 
+
+.btn-secondary:hover, .btn-secondary:active, .btn-secondary:focus  {
+  background-color: $modal-btn-hover-bg-color !important;
+  border-color: $primary !important;
+  color: $primary !important;
+}
+
+.table-actions-button {
+  pointer-events: visible ;
+  color: $button-actions;
+  cursor: pointer;
+  font-weight: $headings-font-weight;
+}
+
+.table-actions-button:hover {
+  // color: #008BCE;
+  opacity: 90%;
+}
+
+//to hide number arrows
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}
+
+.buttons {
+  width: $btn-width;
+  height: $btn-height;
+  border-radius: $btn-border-radius;
+  // background-image: $gradient !important;
+}
+
+.jrlg-buttons {
+  width: $jrlg-btn-width;
+  height: $jrlg-btn-height;
+  border-radius: $btn-border-radius;
+}
+
+.alert-success {
+  color: $success !important;
+  background: transparent;
+  border: 1px solid $success;
+}
+
+.alert-danger {
+  color: $danger !important;
+  background: transparent;
+  border: 1px solid $danger;
+}
+
+textarea.form-control.is-invalid, .form-control.is-invalid {
+  border-color: $danger !important;
+}
+
+.topcards-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.table-spinner {
+  display: block;
+  position: absolute;
+  left: calc(50% - 35px);
+  top: 50%;
+}
+
+.selected {
+  background-color: $primary !important;
+  color: $white !important;
+}
+
+.background-grey {
+  background-color: #dee2e6;
+}
+
+.text-info:hover {
+  cursor: pointer;
+}
+
+input::placeholder {
+  color: $placeholder-color !important;
+}
+
+textarea::placeholder {
+  color: $placeholder-color !important;
+}
+
+textarea::-ms-input-placeholder { /* Edge 12 -18 */
+  color: $placeholder-color !important;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.sidebarArea {
+  z-index: 3;
+}
+
+
+//for marshal admin 
+.booksModalbtn {
+  border : 1px solid purple;
+  color: purple;
+  background-color: white;
+  border-radius: 10px;
+}
+
+/* src/components/PdfUploader.css */
+.custom-file-input-container {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #C9CAC8 !important;
+}
+
+.custom-file-input-label{
+  color: $modal-label-color;
+  padding: 0px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* Hide the actual file input */
+.custom-file-input-label input {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0;
+}
+
+.modalBookPrice {
+  background-color: #D9D9D9;
+  color: $black;
+  padding: 6px 12px;
+}
+
+/* Hide the actual file input */
+#file-input {
+  display: none;
+}
+
+
+.bookImgContainer {
+  border-radius: 24px;
+  border: 1px solid $primary;
+  width: 64px;
+  height: 60px;
+  padding: 8px;
+}
+
+.bookImgContainer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* LOGIN PAGE */
+.loginBg {
+  background: $white;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.loginCard {
+  max-width: 368px;
+  max-height: 378px;
+  border-radius: 20px;
+  padding: 24px;
+  background: linear-gradient(180deg, #662D8C 0%, rgba(237, 30, 121, 0.84) 100%);
+  width: 100%;
+  height: 100%;
+  margin-bottom: 0px;
+  align-self: center;
+}
+
+.loginButton {
+  max-width: 218px;
+  height: auto;
+  width: 100%;
+  border-radius: 20px;
+}
+
+.logincontainer {
+  display: flex;
+}
+
+.section {
+  display: flex;
+  flex: 1;
+  padding: 20px;
+  justify-content: center;
+}
+
+.section img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 1023px) { /*breakpoint*/
+  .logincontainer {
+    flex-direction: column;
+  }
+}
+
+@media (min-width: 576px) {
+  .section .loginCard {
+    min-height: 200px; /* Adjust the minimum height as needed for larger screens */
+  }
+}
+
+@media (min-width: 768px) {
+  .section .loginCard {
+    min-height: 250px; /* Adjust the minimum height as needed for larger screens */
+  }
+}
+
+@media (min-width: 992px) {
+  .section .loginCard {
+    min-height: 300px; /* Adjust the minimum height as needed for larger screens */
+  }
+}
+
+@media (min-width: 1200px) {
+  .section .loginCard {
+    min-height: 378px; /* Adjust the minimum height as needed for larger screens */
+  }
+}
+
+@media (max-width: 576px) {
+  /* Custom styles for small screens */
+  .img-fluid1 {
+    max-width: 60% !important;
+  }
+  .img-fluid2 {
+    max-width: 50% !important;
+    position: relative;
+    bottom: 2em;
+  }
+
+  .section:nth-child(2) {
+    flex: 2;
+  }
+}

@@ -1,0 +1,83 @@
+/*******************/
+// Pagination style
+/********************/
+.pagination {
+    --bs-pagination-padding-x: 0.45rem;
+    --bs-pagination-padding-y: 0.075rem;
+    --bs-pagination-font-size: 1rem;
+    --bs-pagination-color: $black;
+    --bs-pagination-bg: $white;
+    --bs-pagination-border-width: 1px;
+    --bs-pagination-border-color: #ffffff;
+    --bs-pagination-border-radius: 20px;
+    --bs-pagination-hover-color: #D03925;
+    --bs-pagination-hover-bg: var(--bs-tertiary-bg);
+    --bs-pagination-hover-border-color: var(--bs-border-color);
+    --bs-pagination-focus-color: #D03925;
+    --bs-pagination-focus-bg: var(--bs-secondary-bg);
+    --bs-pagination-focus-box-shadow: none;
+    --bs-pagination-active-color: #D03925;
+    --bs-pagination-active-bg: $white;
+    --bs-pagination-active-border-color: #D03925;
+    --bs-pagination-disabled-color: var(--bs-secondary-color);
+    --bs-pagination-disabled-bg: var(--bs-secondary-bg);
+    --bs-pagination-disabled-border-color: $white;
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+}
+.page-item:first-child .page-link {
+    border-color: transparent;
+    background: transparent;
+}
+.page-item:first-child .page-link span {
+    content: "" !important;
+    font-size: 0px;
+}
+.page-item:first-child .page-link :before {
+    content: "\00AB" !important;
+    font-size: 30px;
+    position: relative;
+    bottom: 12px;
+    left: 4px;
+}
+.page-link.active, .active > .page-link {
+    z-index: 3;
+    border-radius: 20px;
+    color: var(--bs-pagination-active-color);
+    background-color: var(--bs-pagination-active-bg);
+    border-color: var(--bs-pagination-active-border-color);
+}
+.page-link {
+    position: relative;
+    display: block;
+    border-radius: 20px;
+    padding: var(--bs-pagination-padding-y) var(--bs-pagination-padding-x);
+    font-size: var(--bs-pagination-font-size);
+    color: var(--bs-pagination-color);
+    text-decoration: none;
+    background-color: var(--bs-pagination-bg);
+    border: var(--bs-pagination-border-width) solid var(--bs-pagination-border-color);
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.page-item:not(:first-child) .page-link {
+    margin-left: calc(1px * 1);
+}
+
+.page-item:last-child .page-link {
+    border-color: transparent;
+    background: transparent;
+}
+
+.page-item:last-child .page-link span {
+    content: "" !important;
+    font-size: 0px;
+}
+.page-item:last-child .page-link :after {
+    content: "\00BB" !important;
+    font-size: 30px;
+    position: relative;
+    bottom: 12px;
+    right: 4px;
+}
