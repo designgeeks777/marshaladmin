@@ -336,3 +336,21 @@ button:hover {
     flex: 2;
   }
 }
+
+
+//for light opacity backdrop on modal
+.modal-backdrop.show {
+  opacity: 0.1 !important;
+}
+
+//login toast msg
+.toastMsg {
+  position: fixed;
+  top: 20px;
+  padding: 10px;
+  background: $primary;
+  color: $white;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}

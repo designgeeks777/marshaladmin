@@ -16,9 +16,13 @@ export const AuthenticationContextProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [isAuthenticating, setISAuthenticating] = useState(false);
   const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
+  const [toastMessage, setToastMessage] = useState(null);
 
   useEffect(() => {
     onAuthStateChanged(auth, async (usr) => {
+      const isPageReloaded =
+        window.performance.navigation.type ===
+        window.performance.navigation.TYPE_RELOAD;
       if (usr) {
         setIsLoading(true);
         if (usr.email === gmailid) {
@@ -37,11 +41,29 @@ export const AuthenticationContextProvider = ({ children }) => {
           setUser(modifiedUser);
           setIsLoading(false);
           setISAuthenticating(false);
+          console.log("signed in", usr?.email, isLoading, isAuthenticating);
         } else {
           setUser(null);
-          setIsLoading(true);
-          setISAuthenticating(true);
+          setIsLoading(false);
+          setISAuthenticating(false);
+          if (!isPageReloaded) {
+            setToastMessage("You are not authorized to login");
+            setTimeout(() => {
+              setToastMessage(null);
+            }, 2000);
+          }
+          console.log("not signed in", usr?.email, isLoading, isAuthenticating);
         }
+      } else {
+        setUser(null);
+        setIsLoading(false);
+        setISAuthenticating(false);
+        console.log(
+          "otuside else not signed in",
+          usr?.email,
+          isLoading,
+          isAuthenticating
+        );
       }
     });
   }, []);
@@ -81,7 +103,14 @@ export const AuthenticationContextProvider = ({ children }) => {
 
   return (
     <AuthenticationContext.Provider
-      value={{ user, isLoading, isAuthenticating, signInWithGoogle, logOut }}
+      value={{
+        user,
+        isLoading,
+        isAuthenticating,
+        toastMessage,
+        signInWithGoogle,
+        logOut,
+      }}
     >
       <ComponentModal
         show={isLogoutModalOpen}

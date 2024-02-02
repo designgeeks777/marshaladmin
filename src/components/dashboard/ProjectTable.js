@@ -13,6 +13,7 @@ import PropTypes from "prop-types";
 import { LoaderContext } from "../../LoaderContext";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import ComponentModal from "../ComponentModal";
 
 const ProjectTables = ({
   children,
@@ -44,12 +45,22 @@ const ProjectTables = ({
     );
   };
 
-  const downloadFile = (filePath) => {
-    const url = filePath;
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleDownload = (filePath) => {
+    setSelectedFile(filePath);
+    setIsModalOpen(true);
+  };
+  const confirmDownload = () => {
+    const url = selectedFile;
     const pathname = new URL(url).pathname;
     const filename = pathname.split("/").pop();
     axios
-      .get(filePath, { responseType: "blob" })
+      .get(selectedFile, { responseType: "blob" })
       .then((response) => {
         const blob = new Blob([response.data], { type: "application/pdf" });
         const link = document.createElement("a");
@@ -60,6 +71,7 @@ const ProjectTables = ({
         link.click();
         document.body.removeChild(link);
         URL.revokeObjectURL(blobUrl);
+        setIsModalOpen(false);
       })
       .catch((error) => {
         console.error("Error downloading PDF:", error);
@@ -89,15 +101,36 @@ const ProjectTables = ({
                 ) : path === "price" ? (
                   <div>Rs {book[path]}</div>
                 ) : path === "bookpdf" ? (
-                  <div className="d-flex flex-column">
-                    <i className="bi bi-filetype-pdf fs-2 text-danger"></i>
-                    <i
-                      className="bi bi-download"
-                      onClick={() => {
-                        downloadFile(book[path]);
-                      }}
-                    ></i>
-                  </div>
+                  <>
+                    <div className="d-flex align-items-center text-primary">
+                      <i className="bi bi-filetype-pdf fs-2 text-danger"></i>
+                      <p
+                        className="text-decoration-underline mb-0 ps-1"
+                        onClick={() => {
+                          handleDownload(book[path]);
+                        }}
+                        style={{ cursor: "pointer" }}
+                      >
+                        Download
+                        <i className="bi bi-download ps-1"></i>
+                      </p>
+                    </div>
+                    {isModalOpen ? (
+                      <ComponentModal
+                        show={isModalOpen}
+                        toggle={closeModal}
+                        title=""
+                        submitButtonTitle="Yes"
+                        submitButtonClick={confirmDownload}
+                        cancelButtonTitle="No"
+                        cancelButtonClick={closeModal}
+                      >
+                        <h5 className="text-center">
+                          Are you sure you want to download?
+                        </h5>
+                      </ComponentModal>
+                    ) : null}
+                  </>
                 ) : path === "downloadCount" ? (
                   <div>downloadCount</div>
                 ) : path === "action" ? (

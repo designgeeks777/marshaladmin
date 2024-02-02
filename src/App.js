@@ -11,7 +11,7 @@ const App = () => {
   const location = useLocation(); // Use the useLocation hook
   const routes = ThemeRoutes(user, isAuthenticating);
   const routing = useRoutes(routes);
-  <div className="dark">{routing}</div>;
+  // <div className="dark">{routing}</div>;
   return (isLoading === undefined || isLoading === true) && // Split second login screen appear issue fix while refresh
     location.pathname !== "/" &&
     location.pathname !== "/login" ? (

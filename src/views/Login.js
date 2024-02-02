@@ -3,8 +3,16 @@ import { useContext } from "react";
 import { AuthenticationContext } from "../services/AuthService";
 import React from "react";
 
+const Toast = ({ message, onClose }) => {
+  return (
+    <div className="toastMsg">
+      <div>{message}</div>
+    </div>
+  );
+};
+
 const Login = () => {
-  const { signInWithGoogle } = useContext(AuthenticationContext);
+  const { signInWithGoogle, toastMessage } = useContext(AuthenticationContext);
 
   return (
     <div className="logincontainer vh-100 bg-white">
@@ -14,12 +22,12 @@ const Login = () => {
           src={require("../assets/images/loginLeft.png")}
           width={361}
           height={275}
-          // className=""
           className="img-fluid1 mx-auto align-self-start"
         />
       </div>
 
       <div className="section">
+        {toastMessage && <Toast message={toastMessage} />}
         <Card className="loginCard d-flex align-items-center justify-content-center">
           <CardTitle tag="h4" className="text-white text-center mb-4">
             Hope you are doing well! <br />
