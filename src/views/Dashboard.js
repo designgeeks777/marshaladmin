@@ -8,8 +8,8 @@ import { useNavigate } from "react-router-dom";
 import Books from "./ui/Books";
 
 const Dashboard = () => {
-  const [downloads, setDownloads] = useState(0);
-  const booksUrl = `${BASEURL}books/`;
+  const [orders, setOrders] = useState(0);
+  const ordersUrl = `${BASEURL}orders/`;
   const { user } = useContext(AuthenticationContext);
   const navigate = useNavigate();
 
@@ -22,24 +22,16 @@ const Dashboard = () => {
   useEffect(() => {
     const loadData = async () => {
       try {
-        const booksResponse = await axios.get(booksUrl);
-        if (booksResponse.data.length > 0) {
-          let bookData = booksResponse.data;
-          // Calculate the sum of all age values
-          const totalCount = bookData.reduce(
-            (accumulator, record) => accumulator + record.downloadCount,
-            0
-          );
-          setDownloads(totalCount);
-        } else {
-          setDownloads(0);
+        const ordesResponse = await axios.get(ordersUrl);
+        if (ordesResponse.data.length > 0) {
+          setOrders(ordesResponse.data.length);
         }
       } catch (error) {
         console.error(error);
       }
     };
     loadData();
-  }, [booksUrl]);
+  }, [ordersUrl]);
 
   return (
     <div>
@@ -47,10 +39,10 @@ const Dashboard = () => {
         <Col sm="6" lg="4">
           <TopCards
             bg="bg-light-warning text-warning"
-            title="Downloads"
+            title="Orders"
             s
-            count={downloads}
-            // routeName="/"
+            count={orders}
+            // routeName="/orders"
           />
         </Col>
         <Col sm="6" lg="4">
@@ -58,7 +50,7 @@ const Dashboard = () => {
             bg="bg-light-danger text-danger"
             title="Earned"
             currency="Rs. "
-            count={downloads}
+            count={orders}
             // routeName="/"
           />
         </Col>

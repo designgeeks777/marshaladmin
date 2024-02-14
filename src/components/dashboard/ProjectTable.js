@@ -8,12 +8,13 @@ import {
   PaginationLink,
   Spinner,
 } from "reactstrap";
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useState } from "react";
 import PropTypes from "prop-types";
 import { LoaderContext } from "../../LoaderContext";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import ComponentModal from "../ComponentModal";
+import NestedTable from "../NestedTable";
 
 const ProjectTables = ({
   children,
@@ -78,6 +79,12 @@ const ProjectTables = ({
       });
   };
 
+  const [selectedId, setSelectedId] = useState(null);
+  const onSelectItem = (id) => {
+    if (id === selectedId) return setSelectedId(null);
+    setSelectedId(id);
+  };
+
   // get table row book
   const tdData = () => {
     let paginatedTableData = tableData.slice(
@@ -100,7 +107,7 @@ const ProjectTables = ({
                   </div>
                 ) : path === "price" ? (
                   <div>Rs {book[path]}</div>
-                ) : path === "bookpdf" ? (
+                ) : path === "bookpdf" || path === "paymentscreenshot" ? (
                   <>
                     <div className="d-flex align-items-center text-primary">
                       <i className="bi bi-filetype-pdf fs-2 text-danger"></i>
@@ -131,18 +138,26 @@ const ProjectTables = ({
                       </ComponentModal>
                     ) : null}
                   </>
-                ) : path === "downloadCount" ? (
-                  <div>downloadCount</div>
-                ) : path === "action" ? (
-                  <div
-                    className="table-actions-button d-flex justify-content-center text-primary"
-                    size="sm"
-                    onClick={() => {
-                      parentCallback(paginatedTableData[index]);
-                    }}
-                  >
-                    {book[path].toUpperCase()}
-                  </div>
+                ) : path === "books" ? (
+                  <span className="ps-4">
+                    {book[path].length === 0 ? null : (
+                      <i
+                        className={`bi ${
+                          selectedId === index
+                            ? "bi-chevron-down"
+                            : "bi-chevron-right"
+                        } text-primary`}
+                        style={{ paddingRight: 6, cursor: "pointer" }}
+                        onClick={() => {
+                          onSelectItem(index);
+                        }}
+                      />
+                    )}
+                    {book[path].length}
+                    {selectedId === index ? (
+                      <NestedTable tableData={book[path]} />
+                    ) : null}
+                  </span>
                 ) : (
                   <>
                     {typeof book[path] === "string"
