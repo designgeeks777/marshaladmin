@@ -21,8 +21,7 @@ export const AuthenticationContextProvider = ({ children }) => {
   useEffect(() => {
     onAuthStateChanged(auth, async (usr) => {
       const isPageReloaded =
-        window.performance.navigation.type ===
-        window.performance.navigation.TYPE_RELOAD;
+        window.performance.getEntriesByType("navigation")[0].type === "reload";
       if (usr) {
         setIsLoading(true);
         if (usr.email === gmailid) {
@@ -41,7 +40,6 @@ export const AuthenticationContextProvider = ({ children }) => {
           setUser(modifiedUser);
           setIsLoading(false);
           setISAuthenticating(false);
-          console.log("signed in", usr?.email, isLoading, isAuthenticating);
         } else {
           setUser(null);
           setIsLoading(false);
@@ -52,18 +50,11 @@ export const AuthenticationContextProvider = ({ children }) => {
               setToastMessage(null);
             }, 2000);
           }
-          console.log("not signed in", usr?.email, isLoading, isAuthenticating);
         }
       } else {
         setUser(null);
         setIsLoading(false);
         setISAuthenticating(false);
-        console.log(
-          "otuside else not signed in",
-          usr?.email,
-          isLoading,
-          isAuthenticating
-        );
       }
     });
   }, []);

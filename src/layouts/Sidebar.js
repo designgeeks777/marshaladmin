@@ -1,14 +1,8 @@
-import { Button, Nav, NavItem } from "reactstrap";
-import Logo from "./Logo";
+import { Nav, NavItem } from "reactstrap";
 import { Link, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faColumns,
-  faBullhorn,
-  faPeopleGroup,
-  faCalendarDays,
-  faPersonPraying,
-  faBook,
   faMoneyBillTransfer,
 } from "@fortawesome/free-solid-svg-icons";
 const navigation = [
@@ -17,36 +11,11 @@ const navigation = [
     href: "/dashboard",
     icon: faColumns,
   },
-  // {
-  //   title: "Announcements",
-  //   href: "/announcements",
-  //   icon: faBullhorn,
-  // },
-  // {
-  //   title: "Life Groups",
-  //   href: "/lifeGroups",
-  //   icon: faPeopleGroup,
-  // },
-  // {
-  //   title: "Events",
-  //   href: "/events",
-  //   icon: faCalendarDays,
-  // },
   {
     title: "Books",
     href: "/books",
     icon: faMoneyBillTransfer,
   },
-  {
-    title: "Transaction",
-    href: "/transactions",
-    icon: faBook,
-  },
-  // {
-  //   title: "Guest Counter",
-  //   href: "/guestCounter",
-  //   icon: faPeopleGroup,
-  // },
 ];
 
 const Sidebar = () => {

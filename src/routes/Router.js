@@ -8,7 +8,6 @@ const FullLayout = lazy(() => import("../layouts/FullLayout.js"));
 
 const Dashboard = lazy(() => import("../views/Dashboard"));
 const Login = lazy(() => import("../views/Login"));
-const Transactions = lazy(() => import("../views/ui/Transactions"));
 const Books = lazy(() => import("../views/ui/Books.js"));
 
 /*****Routes******/
@@ -21,7 +20,6 @@ const ThemeRoutes = (isAuthenticated, isAuthenticating) => [
     children: [
       { path: "/", element: <Navigate to="/dashboard" /> },
       { path: "/dashboard", exact: true, element: <Dashboard /> },
-      { path: "/transactions", exact: true, element: <Transactions /> },
       { path: "/books", exact: true, element: <Books /> },
     ],
   },

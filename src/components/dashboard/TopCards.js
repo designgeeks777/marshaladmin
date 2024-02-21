@@ -15,7 +15,9 @@ const TopCards = (props) => {
         <div className="ms-3 p-4 text-center">
           <div className="d-flex justify-content-center align-items-center">
             {props.currency}{" "}
-            <h1 className="mb-0 font-weight-bold text-primary">{props.count}</h1>
+            <h1 className="mb-0 font-weight-bold text-primary">
+              {props.count}
+            </h1>
           </div>
           <small className="text-muted">{props.title}</small>
         </div>
