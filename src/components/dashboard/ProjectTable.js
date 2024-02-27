@@ -8,20 +8,14 @@ import {
   PaginationLink,
   Spinner,
 } from "reactstrap";
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useState } from "react";
 import PropTypes from "prop-types";
 import { LoaderContext } from "../../LoaderContext";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import ComponentModal from "../ComponentModal";
 
-const ProjectTables = ({
-  children,
-  parentCallback,
-  tableData,
-  tableColumns,
-  title,
-}) => {
+const ProjectTables = ({ children, tableData, tableColumns, title }) => {
   const { isLoading, setIsLoading } = useContext(LoaderContext);
   const [currentPage, setCurrentPage] = useState(0);
   const pageSize = 5;
@@ -133,16 +127,6 @@ const ProjectTables = ({
                   </>
                 ) : path === "downloadCount" ? (
                   <div>downloadCount</div>
-                ) : path === "action" ? (
-                  <div
-                    className="table-actions-button d-flex justify-content-center text-primary"
-                    size="sm"
-                    onClick={() => {
-                      parentCallback(paginatedTableData[index]);
-                    }}
-                  >
-                    {book[path].toUpperCase()}
-                  </div>
                 ) : (
                   <>
                     {typeof book[path] === "string"

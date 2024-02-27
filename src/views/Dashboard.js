@@ -53,15 +53,6 @@ const Dashboard = () => {
             // routeName="/"
           />
         </Col>
-        <Col sm="6" lg="4">
-          <TopCards
-            bg="bg-light-danger text-danger"
-            title="Earned"
-            currency="Rs. "
-            count={downloads}
-            // routeName="/"
-          />
-        </Col>
       </Row>
 
       <Books hideAddBtn={true} />
